@@ -1,6 +1,6 @@
 # Smoke Zone & BUDDY BIN Initiative Website
 
-A production-ready, single-page web presentation for **Shravni's Hospitality — Smoke Zone & BUDDY BIN Circular Recycling Initiative**.
+A production-ready, single-page web presentation for **Shravni's Hospitality - Smoke Zone & BUDDY BIN Circular Recycling Initiative**.
 
 ## 🚀 How to Install and Run
 

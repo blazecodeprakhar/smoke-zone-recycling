@@ -57,7 +57,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenInquiry }) => {
                 loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
               }`}
             >
-              Shravni's <strong className="text-slate-900 font-semibold">Smoke Zone</strong> delivers architectural smoking cabins powered by 3-stage HEPA air purification and the pioneer <strong className="text-slate-900 font-semibold">BUDDY BIN</strong> circular waste program—eliminating butt litter and containing smoke in premier corporate hubs.
+              Shravni's <strong className="text-slate-900 font-semibold">Smoke Zone</strong> delivers architectural smoking cabins powered by 3-stage HEPA air purification and the pioneer <strong className="text-slate-900 font-semibold">BUDDY BIN</strong> circular waste program - eliminating butt litter and containing smoke in premier corporate hubs.
             </p>
 
             {/* Action Buttons - Delay 450ms */}
