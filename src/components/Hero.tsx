@@ -10,7 +10,6 @@ export const Hero: React.FC<HeroProps> = ({ onOpenInquiry }) => {
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
-    // Trigger hero entrance animations immediately on initial render
     const timer = setTimeout(() => setLoaded(true), 50);
     return () => clearTimeout(timer);
   }, []);
@@ -27,7 +26,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenInquiry }) => {
           {/* Left Hero Content */}
           <div className="lg:col-span-7 flex flex-col items-start">
             
-            {/* Top Badge - Delay 100ms */}
+            {/* Top Badge */}
             <div
               className={`inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-slate-200 shadow-xs mb-6 hover:border-emerald-500/50 transition-all duration-700 transform ${
                 loaded ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4'
@@ -40,7 +39,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenInquiry }) => {
               </span>
             </div>
 
-            {/* Main Headline - Delay 250ms */}
+            {/* Main Headline */}
             <h1
               style={{ transitionDelay: '150ms' }}
               className={`font-display text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-900 leading-[1.15] mb-6 transition-all duration-700 transform ${
@@ -50,7 +49,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenInquiry }) => {
               Engineering <span className="bg-clip-text text-transparent bg-gradient-to-r from-brand-teal via-sky-600 to-emerald-600">Cleaner Spaces</span> & Circular Recycling.
             </h1>
 
-            {/* Supporting Paragraph - Delay 350ms */}
+            {/* Supporting Paragraph */}
             <p
               style={{ transitionDelay: '300ms' }}
               className={`text-base sm:text-lg text-slate-600 font-normal leading-relaxed mb-8 max-w-2xl transition-all duration-700 transform ${
@@ -60,7 +59,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenInquiry }) => {
               Shravni's <strong className="text-slate-900 font-semibold">Smoke Zone</strong> delivers architectural smoking cabins powered by 3-stage HEPA air purification and the pioneer <strong className="text-slate-900 font-semibold">BUDDY BIN</strong> circular waste program - eliminating butt litter and containing smoke in premier corporate hubs.
             </p>
 
-            {/* Action Buttons - Delay 450ms */}
+            {/* Action Buttons */}
             <div
               style={{ transitionDelay: '450ms' }}
               className={`flex flex-wrap items-center gap-4 mb-12 w-full sm:w-auto transition-all duration-700 transform ${
@@ -84,22 +83,22 @@ export const Hero: React.FC<HeroProps> = ({ onOpenInquiry }) => {
               </a>
             </div>
 
-            {/* Key Metrics Strip - Delay 600ms */}
+            {/* Key Metrics Strip - Clean Grid Spacing */}
             <div
               style={{ transitionDelay: '600ms' }}
-              className={`grid grid-cols-2 sm:grid-cols-4 gap-4 w-full pt-8 border-t border-slate-200 transition-all duration-700 transform ${
+              className={`grid grid-cols-2 sm:grid-cols-4 gap-6 lg:gap-8 w-full pt-8 border-t border-slate-200 transition-all duration-700 transform ${
                 loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
               }`}
             >
               {PROJECT_INFO.stats.map((stat, idx) => (
-                <div key={idx} className="flex flex-col group hover:-translate-y-1 transition-transform duration-300">
+                <div key={idx} className="flex flex-col group hover:-translate-y-1 transition-transform duration-300 pr-2">
                   <span className="font-display text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight group-hover:text-brand-teal transition-colors">
                     {stat.value}
                   </span>
-                  <span className="text-xs font-bold text-brand-teal mt-0.5 whitespace-nowrap">
+                  <span className="text-xs font-bold text-brand-teal mt-1 leading-snug">
                     {stat.label}
                   </span>
-                  <span className="text-[11px] text-slate-500 font-medium mt-0.5">
+                  <span className="text-[11px] text-slate-500 font-medium mt-0.5 leading-tight">
                     {stat.detail}
                   </span>
                 </div>
@@ -108,7 +107,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenInquiry }) => {
 
           </div>
 
-          {/* Right Hero Visual Showcase - Delay 350ms */}
+          {/* Right Hero Visual Showcase */}
           <div
             style={{ transitionDelay: '350ms' }}
             className={`lg:col-span-5 relative transition-all duration-1000 transform ${

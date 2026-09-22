@@ -16,7 +16,7 @@ export const Footer: React.FC = () => {
           {/* Brand Col */}
           <div className="md:col-span-5 flex flex-col items-start">
             <a href="#" className="flex items-center gap-2 mb-4">
-              <span className="font-display font-extrabold text-lg text-white">
+              <span className="font-display font-extrabold text-xl text-white tracking-tight">
                 SMOKE<span className="text-brand-teal">ZONE</span>
               </span>
             </a>
@@ -25,9 +25,10 @@ export const Footer: React.FC = () => {
               Pioneering 3-stage HEPA air filtration smoking cabins and the BUDDY BIN circular cigarette butt recycling program across premier corporate hubs in India.
             </p>
 
-            <div className="flex items-center gap-2 text-[11px] text-emerald-400 font-bold">
-              <Shield className="w-3.5 h-3.5" />
-              <span>{PROJECT_INFO.standard}</span>
+            {/* Formatted ASHRAE Badge */}
+            <div className="flex items-start gap-2.5 text-[11px] text-emerald-400 font-bold bg-slate-800/80 p-3 rounded-xl border border-slate-700/80 max-w-md">
+              <Shield className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
+              <span className="leading-snug">{PROJECT_INFO.standard}</span>
             </div>
           </div>
 

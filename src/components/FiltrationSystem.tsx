@@ -1,10 +1,21 @@
-import React, { useState } from 'react';
-import { Wind, Filter, CheckCircle } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Wind, Filter, CheckCircle, Pause, Play } from 'lucide-react';
 import { FILTRATION_STAGES } from '../data/projectData';
 import { AnimatedSection } from './AnimatedSection';
 
 export const FiltrationSystem: React.FC = () => {
   const [activeStage, setActiveStage] = useState(1);
+  const [isPaused, setIsPaused] = useState(false);
+
+  useEffect(() => {
+    if (isPaused) return;
+
+    const interval = setInterval(() => {
+      setActiveStage((prevStage) => (prevStage % FILTRATION_STAGES.length) + 1);
+    }, 4500);
+
+    return () => clearInterval(interval);
+  }, [isPaused]);
 
   return (
     <section id="filtration" className="py-20 lg:py-28 relative bg-slate-50 border-b border-slate-200 overflow-hidden">
@@ -25,10 +36,20 @@ export const FiltrationSystem: React.FC = () => {
           <p className="mt-4 text-base text-slate-600 font-normal">
             Delivering clean, breathable ambient air through multi-stage mechanical and chemical adsorption, eliminating smoke drift and harmful gaseous byproducts.
           </p>
+
+          <div className="mt-4 flex items-center justify-center gap-2 text-xs text-slate-500 font-medium">
+            <button
+              onClick={() => setIsPaused(!isPaused)}
+              className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white border border-slate-200 text-slate-700 hover:text-brand-teal transition-colors shadow-xs"
+            >
+              {isPaused ? <Play className="w-3 h-3 fill-slate-700" /> : <Pause className="w-3 h-3 fill-slate-700" />}
+              <span>{isPaused ? 'Auto-rotate Paused' : 'Auto-rotating Stages'}</span>
+            </button>
+          </div>
         </AnimatedSection>
 
         {/* Interactive Filtration Pipeline */}
-        <div className="grid lg:grid-cols-12 gap-8 items-center mb-16">
+        <div className="grid lg:grid-cols-12 gap-8 items-center mb-16" onMouseEnter={() => setIsPaused(true)} onMouseLeave={() => setIsPaused(false)}>
           
           {/* Stage Buttons list */}
           <div className="lg:col-span-5 flex flex-col gap-4">
@@ -37,13 +58,21 @@ export const FiltrationSystem: React.FC = () => {
               return (
                 <AnimatedSection key={stage.stage} delay={idx * 100}>
                   <button
-                    onClick={() => setActiveStage(stage.stage)}
-                    className={`w-full p-6 rounded-2xl text-left transition-all duration-300 border ${
+                    onClick={() => {
+                      setActiveStage(stage.stage);
+                      setIsPaused(true);
+                    }}
+                    className={`relative overflow-hidden w-full p-6 rounded-2xl text-left transition-all duration-300 border ${
                       isActive
                         ? 'bg-white border-brand-teal shadow-lg shadow-brand-teal/10 scale-[1.02]'
                         : 'bg-white/70 border-slate-200 hover:bg-white hover:border-slate-300 shadow-2xs'
                     }`}
                   >
+                    {/* Animated Progress bar on active stage button */}
+                    {isActive && !isPaused && (
+                      <div className="absolute bottom-0 left-0 h-1 bg-gradient-to-r from-brand-teal to-emerald-600 animate-[progress_4.5s_linear_infinite]" />
+                    )}
+
                     <div className="flex items-center justify-between mb-2">
                       <span className={`text-xs font-bold px-2.5 py-0.5 rounded-full ${
                         isActive ? 'bg-brand-teal text-white' : 'bg-slate-100 text-slate-600'

@@ -3,11 +3,14 @@ import { CABIN_VARIANTS } from '../data/projectData';
 import { Layout, Fan, CheckCircle2, ArrowUpRight } from 'lucide-react';
 import { AnimatedSection } from './AnimatedSection';
 
-interface CabinVariantsProps {
-  onOpenInquiry: () => void;
-}
+export const CabinVariants: React.FC<{ onOpenInquiry: () => void }> = ({ onOpenInquiry }) => {
+  const images = [
+    "/media/pavilion-canopy.jpg",
+    "/media/modular-cabin-white.jpg",
+    "/media/outdoor-installation-wide.jpg",
+    "/media/matte-black-booth.jpg"
+  ];
 
-export const CabinVariants: React.FC<CabinVariantsProps> = ({ onOpenInquiry }) => {
   return (
     <section id="cabins" className="py-20 lg:py-28 bg-slate-50 border-b border-slate-200 relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -32,38 +35,51 @@ export const CabinVariants: React.FC<CabinVariantsProps> = ({ onOpenInquiry }) =
           </button>
         </AnimatedSection>
 
-        {/* 4 Variant Cards Grid */}
+        {/* 4 Variant Cards Grid with Visual Image Previews */}
         <div className="grid md:grid-cols-2 gap-8">
           {CABIN_VARIANTS.map((variant, idx) => (
             <AnimatedSection key={idx} delay={idx * 100}>
               <div
-                className="h-full p-8 rounded-3xl bg-white border border-slate-200 hover:border-brand-teal/80 transition-all duration-300 flex flex-col justify-between group shadow-sm hover:shadow-xl"
+                className="h-full rounded-3xl bg-white border border-slate-200 hover:border-brand-teal/80 transition-all duration-300 flex flex-col justify-between group shadow-sm hover:shadow-xl overflow-hidden"
               >
-                <div>
-                  <div className="w-12 h-12 rounded-2xl bg-sky-50 border border-sky-200 flex items-center justify-center text-brand-teal mb-6 group-hover:scale-110 transition-transform shrink-0">
-                    <Fan className="w-6 h-6" />
+                {/* Visual Image Header */}
+                <div className="relative h-48 sm:h-56 w-full overflow-hidden bg-slate-900">
+                  <img
+                    src={images[idx % images.length]}
+                    alt={variant.title}
+                    className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent" />
+                  
+                  <div className="absolute top-3 left-3 w-10 h-10 rounded-xl bg-white/95 backdrop-blur-md border border-slate-200 flex items-center justify-center text-brand-teal shadow-xs">
+                    <Fan className="w-5 h-5" />
                   </div>
-
-                  <h3 className="text-xl font-bold text-slate-900 mb-3 group-hover:text-brand-teal transition-colors">
-                    {variant.title}
-                  </h3>
-
-                  <p className="text-sm text-slate-600 leading-relaxed mb-6 font-medium">
-                    {variant.description}
-                  </p>
                 </div>
 
-                <div className="pt-6 border-t border-slate-100">
-                  <h4 className="text-xs font-bold text-slate-500 uppercase tracking-wider mb-3">
-                    Technical Highlights
-                  </h4>
-                  <div className="grid grid-cols-2 gap-2.5">
-                    {variant.features.map((feat, fIdx) => (
-                      <div key={fIdx} className="flex items-center gap-2 text-xs text-slate-700 font-semibold">
-                        <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
-                        <span className="truncate">{feat}</span>
-                      </div>
-                    ))}
+                {/* Body Content */}
+                <div className="p-6 sm:p-8 flex-1 flex flex-col justify-between">
+                  <div>
+                    <h3 className="text-xl font-bold text-slate-900 mb-2 group-hover:text-brand-teal transition-colors">
+                      {variant.title}
+                    </h3>
+
+                    <p className="text-sm text-slate-600 leading-relaxed mb-6 font-medium">
+                      {variant.description}
+                    </p>
+                  </div>
+
+                  <div className="pt-6 border-t border-slate-100">
+                    <h4 className="text-xs font-bold text-slate-500 uppercase tracking-wider mb-3">
+                      Technical Highlights
+                    </h4>
+                    <div className="grid grid-cols-2 gap-2.5">
+                      {variant.features.map((feat, fIdx) => (
+                        <div key={fIdx} className="flex items-center gap-2 text-xs text-slate-700 font-semibold">
+                          <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
+                          <span className="truncate">{feat}</span>
+                        </div>
+                      ))}
+                    </div>
                   </div>
                 </div>
               </div>
