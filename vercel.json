@@ -1,0 +1,6 @@
+{
+  "buildCommand": "vite build",
+  "outputDirectory": "dist",
+  "devCommand": "vite --port 3000",
+  "installCommand": "npm install"
+}
